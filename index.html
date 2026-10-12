@@ -1,0 +1,226 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STUDENT MANAGEMENT SYSTEM</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body data-theme="light">
+    <main>
+        <div class="top-sms">
+            <div class="top-left">
+                <button class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+                <h1>Student Management System</h1>
+            </div>
+
+            <section class="header-actions">
+                <button class="mode" id="themeToggle" aria-label="Toggle theme">🌙</button>
+                <div class="admin-badge" aria-label="Admin profile">
+                    <div class="admin-avatar">A</div>
+                    <article>
+                        <p>Admin</p>
+                        <small>Administrator</small>
+                    </article>
+                </div>
+                <select class="admin-select" aria-label="Role selector">
+                    <option>Admin</option>
+                    <option>Manager</option>
+                    <option>Teacher</option>
+                </select>
+            </section>
+        </div>
+
+        <div class="analysis">
+            <section class="box-analysis">
+                <p class="total-icon">👨‍👩‍👧‍👦</p>
+                <article>
+                    <p class="showTotalStudent">Total Students</p>
+                    <strong id="totalStudentsValue">0</strong>
+                </article>
+            </section>
+            <section class="box-analysis">
+                <p class="active-icon">✅</p>
+                <article>
+                    <p class="showActiveStudent">Active Students</p>
+                    <strong id="activeStudentsValue">0</strong>
+                </article>
+            </section>
+            <section class="box-analysis">
+                <p class="department-icon">🦸</p>
+                <article>
+                    <p class="showDepartment">Departments</p>
+                    <strong id="departmentCountValue">0</strong>
+                </article>
+            </section>
+            <section class="box-analysis">
+                <p class="course-icon">📚</p>
+                <article>
+                    <p class="showTotalCourse">Total Courses</p>
+                    <strong id="courseCountValue">8</strong>
+                </article>
+            </section>
+        </div>
+
+        <div class="show-grid">
+            <div class="details">
+                <section class="search-box">
+                    <input id="searchInput" type="text" placeholder="🔍 Search students by name, ID or department...">
+                    <button id="searchBtn">🔍 Search</button>
+                </section>
+
+                <section class="student-list">
+                    <article class="list-top">
+                        <h2>👨‍👩 Students List</h2>
+                        <select id="departmentFilter" aria-label="Filter by department">
+                            <option value="All Departments">All Departments</option>
+                        </select>
+                    </article>
+
+                    <article id="studentList" class="studentss" aria-live="polite"></article>
+                </section>
+            </div>
+
+            <div class="info">
+                <section class="add-student-form">
+                    <h2>💆 Add New Student</h2>
+                    <form id="studentForm">
+                        <div class="field-group">
+                            <label for="studentName">Student Name</label>
+                            <input type="text" id="studentName" placeholder="Enter student name" required>
+                        </div>
+
+                        <div class="field-group">
+                            <label for="studentIdInput">Student ID</label>
+                            <input type="text" id="studentIdInput" placeholder="Enter Student ID" required>
+                        </div>
+
+                        <div class="field-group">
+                            <label for="studentDepartment">Department</label>
+                            <select id="studentDepartment" required>
+                                <option value="">Select department</option>
+                                <option>Computer Engineering</option>
+                                <option>Civil Engineering</option>
+                                <option>Chemical Engineering</option>
+                                <option>Electrical Engineering</option>
+                                <option>Mechanical Engineering</option>
+                                <option>Computer Science</option>
+                                <option>Information Technology</option>
+                            </select>
+                        </div>
+
+                        <div class="field-group">
+                            <label for="studentYear">Academic Year</label>
+                            <select id="studentYear" required>
+                                <option value="">Select year</option>
+                                <option>1st Year</option>
+                                <option>2nd Year</option>
+                                <option>3rd Year</option>
+                                <option>4th Year</option>
+                            </select>
+                        </div>
+
+                        <div class="field-group">
+                            <label for="studentStatus">Status</label>
+                            <select id="studentStatus" required>
+                                <option value="Active">Active</option>
+                                <option value="Inactive">Inactive</option>
+                                <option value="On Leave">On Leave</option>
+                            </select>
+                        </div>
+
+                        <button type="submit">🅰️ Add Student</button>
+                    </form>
+                </section>
+
+                <section class="recent-activities">
+                    <h3>↗️ Recent Activities</h3>
+                    <ul id="activityList" class="activity-list"></ul>
+                    <a href="#">View all activities ➡️</a>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <aside id="sideNav">
+        <div class="side-head">
+            <p class="graduate">🎓</p>
+            <div>
+                <h2>SMS</h2>
+                <p>student Management</p>
+            </div>
+        </div>
+
+        <section class="anchor">
+            <a href="index.html">🏛️ Dashboard</a>
+            <a href="#">👨‍👩 Students</a>
+            <a href="#">💆 Add Student</a>
+            <a href="#">🏛️ Departments</a>
+            <a href="#">⏸️ Reports</a>
+            <a href="#">📲 Settings</a>
+        </section>
+
+        <div class="words-talk">
+            <figure>🎓</figure>
+            <figcaption>Education is the key to success and the most powerful weapon which you can use to change the world.</figcaption>
+        </div>
+    </aside>
+
+    <footer>
+        <div class="systems">
+            <section>
+                <p class="img">🏛️</p>
+                <div>
+                    <h2>Add Students</h2>
+                    <p>Easily add new students to the system</p>
+                </div>
+            </section>
+            <section>
+                <p class="img">🔍</p>
+                <div>
+                    <h2>Search Students</h2>
+                    <p>Find students quickly by name, ID or department</p>
+                </div>
+            </section>
+            <section>
+                <p class="img">🚼</p>
+                <div>
+                    <h2>Manage Students</h2>
+                    <p>View, edit and delete student information</p>
+                </div>
+            </section>
+            <section>
+                <p class="img">📶</p>
+                <div>
+                    <h2>Track Progress</h2>
+                    <p>Monitor student count and activities</p>
+                </div>
+            </section>
+        </div>
+
+        <div class="footer-text">
+            <p>🏘️ Build your future with better education management</p>
+            <p>💗</p>
+        </div>
+
+        <p class="footer-reserved">
+            &copy;<span id="year"></span> All rights reserved.
+        </p>
+    </footer>
+
+    <div id="studentModal" class="modal hidden" aria-hidden="true">
+        <div class="modal-content">
+            <button id="closeModalBtn" class="close-modal" aria-label="Close student details">×</button>
+            <h3>Student Details</h3>
+            <div id="studentModalBody"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

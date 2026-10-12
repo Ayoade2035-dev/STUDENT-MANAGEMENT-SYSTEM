@@ -1,0 +1,592 @@
+﻿/* =============================================
+   RESET & BASE
+   ============================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    overflow-x: hidden;
+}
+
+body {
+    background-color: #f8fafc;
+    color: #1E293B;
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    grid-template-rows: 1fr auto;
+    grid-template-areas:
+        "sm mn"
+        "ft ft";
+}
+
+button, a:hover {
+    cursor: pointer;
+}
+
+/* =============================================
+   SIDEBAR / ASIDE
+   ============================================= */
+aside {
+    grid-area: sm;
+    background-color: #f0f8ffaa;
+    min-height: 100vh;
+    transition: transform 0.3s ease;
+    z-index: 200;
+}
+
+.side-head {
+    display: flex;
+    align-items: center;
+    background-color: #2563EB;
+    color: white;
+    padding: 10px;
+    gap: 10px;
+    border-radius: 10px 0 0 0;
+}
+
+.side-head .graduate {
+    font-size: 3rem;
+}
+
+.anchor {
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 20px 15px;
+    font-size: larger;
+}
+
+.anchor a {
+    text-decoration: none;
+    color: #1E293B;
+    padding: 10px 12px;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+.anchor a:hover {
+    background-color: rgba(125, 125, 209, 0.25);
+}
+
+.anchor a:first-child {
+    background-color: rgba(125, 125, 209, 0.3);
+    width: auto;
+    height: auto;
+    border-radius: 5px;
+    margin: 0;
+}
+
+.words-talk {
+    margin-top: 40px;
+    padding: 15px;
+}
+
+.words-talk figure {
+    font-size: 80px;
+}
+
+/* Sidebar overlay (mobile) */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 150;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.sidebar-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* =============================================
+   MAIN CONTENT
+   ============================================= */
+main {
+    grid-area: mn;
+    background-color: rgba(221, 166, 221, 0.2);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* =============================================
+   TOP HEADER BAR
+   ============================================= */
+.top-sms {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.top-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.top-sms h1 {
+    font-size: clamp(1rem, 2.5vw, 1.6rem);
+}
+
+.top-sms section {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.top-sms section select {
+    border: none;
+    background-color: transparent;
+    outline: none;
+}
+
+.mode {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    padding: 5px;
+    font-size: 22px;
+    border: 1px solid #ccc;
+    background: #fff;
+}
+
+/* Hamburger – hidden on desktop, shown on mobile */
+.hamburger {
+    display: none;
+    background: #2563EB;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 22px;
+    width: 42px;
+    height: 42px;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+/* =============================================
+   ANALYSIS CARDS
+   ============================================= */
+.analysis {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 20px 0;
+}
+
+.box-analysis {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #ffff;
+    display: flex;
+    align-items: center;
+    min-height: 100px;
+    gap: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.total,
+.active,
+.department,
+.course {
+    background-color: rgb(119, 18, 221);
+    min-width: 3rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 8px;
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.active {
+    background-color: #0f0;
+}
+
+.department {
+    background-color: gold;
+}
+
+.course {
+    background-color: #2563EB;
+}
+
+/* =============================================
+   SHOW GRID (details + info side by side)
+   ============================================= */
+.show-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
+
+/* =============================================
+   STUDENT LIST / DETAILS
+   ============================================= */
+.details {
+    background-color: rgba(255, 0, 255, 0.05);
+    border-radius: 20px;
+}
+
+.search-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8fafc;
+    padding: 16px 20px;
+    margin: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 14px gray;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.search-box input {
+    flex: 1;
+    min-width: 0;
+    padding: 12px 15px;
+    outline: none;
+    border-radius: 10px;
+    font-size: medium;
+    border: 1px solid #ccc;
+}
+
+.search-box button {
+    background-color: #2563EB;
+    color: #f0f8ffaa;
+    font-size: medium;
+    min-width: 90px;
+    padding: 12px 16px;
+    border: none;
+    border-radius: 10px;
+    white-space: nowrap;
+}
+
+.student-list {
+    background-color: #f0f8ffaa;
+    margin: 20px;
+    padding: 15px;
+    box-shadow: 0px 4px 14px #ccd;
+    border-radius: 10px;
+}
+
+.list-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    margin: 5px;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.list-top h2 {
+    color: #2563EB;
+}
+
+.studentss {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    border: 1px solid gray;
+    margin: 10px;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.studentss .list-box {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.list-box figure {
+    border: 1px solid greenyellow;
+    border-radius: 10px;
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+}
+
+.list-box button {
+    background-color: #2563EB;
+    color: white;
+    border: none;
+    padding: 5px 8px;
+    border-radius: 5px;
+    margin-top: 4px;
+    font-size: 0.85rem;
+}
+
+.list-box .del {
+    background-color: #ef4444;
+}
+
+/* =============================================
+   INFO PANEL (Add Student + Recent Activities)
+   ============================================= */
+.add-student-form {
+    background-color: #f0f8ffaa;
+    padding: 24px;
+    margin: 10px 0;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.add-student-form input,
+.add-student-form select,
+.add-student-form button {
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+.add-student-form button {
+    background-color: #2563EB;
+    color: #ffff;
+    border: none;
+    cursor: pointer;
+}
+
+.info .recent-activities {
+    background-color: #f0f8ffaa;
+    min-height: 30vh;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+/* =============================================
+   FOOTER
+   ============================================= */
+footer {
+    grid-area: ft;
+}
+
+footer .systems {
+    margin: 30px 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    border: 1px solid gray;
+    border-radius: 20px;
+    background-color: #f8fafc;
+    padding: 10px;
+}
+
+.systems section {
+    background-color: #f8fafc;
+    padding: 16px;
+    margin: 8px;
+    line-height: 2;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    flex: 1 1 180px;
+}
+
+.systems .img {
+    border: 1px solid coral;
+    width: 80px;
+    height: 70px;
+    background-color: #0f0;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    border-radius: 8px;
+}
+
+.footer-text {
+    color: #fff;
+    background: linear-gradient(to left, rgb(23, 23, 233), rgb(223, 123, 223));
+    margin: 10px;
+    padding: 12px 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.footer-reserved {
+    text-align: center;
+    padding: 8px;
+}
+
+/* =============================================
+   RESPONSIVE – TABLET  (≤ 1024px)
+   ============================================= */
+@media (max-width: 1024px) {
+    .studentss {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .analysis {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* =============================================
+   RESPONSIVE – MOBILE  (≤ 768px)
+   ============================================= */
+@media (max-width: 768px) {
+
+    /* Body becomes a single column */
+    body {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "mn"
+            "ft";
+    }
+
+    /* Sidebar slides in from the left */
+    aside {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 240px;
+        height: 100vh;
+        transform: translateX(-100%);
+        box-shadow: 4px 0 16px rgba(0, 0, 0, 0.2);
+        overflow-y: auto;
+    }
+
+    aside.open {
+        transform: translateX(0);
+    }
+
+    /* Show overlay */
+    .sidebar-overlay {
+        display: block;
+    }
+
+    /* Show hamburger button */
+    .hamburger {
+        display: flex;
+    }
+
+    /* Top bar title shrinks */
+    .top-sms h1 {
+        font-size: 1.1rem;
+    }
+
+    /* Analysis cards: 2 per row */
+    .analysis {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Collapse the details+info two-column grid */
+    .show-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Student cards: 1 per row */
+    .studentss {
+        grid-template-columns: 1fr;
+    }
+
+    /* Search bar stacks vertically */
+    .search-box {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-box input {
+        width: 100%;
+    }
+
+    .search-box button {
+        width: 100%;
+        text-align: center;
+    }
+
+    .words-talk {
+        margin-top: 20px;
+    }
+
+    /* Footer features wrap */
+    footer .systems {
+        flex-direction: column;
+        gap: 0;
+        margin: 20px 10px;
+    }
+
+    .systems section {
+        flex: 1 1 100%;
+    }
+}
+
+/* =============================================
+   RESPONSIVE – SMALL MOBILE  (≤ 480px)
+   ============================================= */
+@media (max-width: 480px) {
+
+    main {
+        padding: 12px;
+    }
+
+    .top-sms h1 {
+        font-size: 0.9rem;
+    }
+
+    /* Analysis cards: stack to 1 per row */
+    .analysis {
+        grid-template-columns: 1fr;
+    }
+
+    .box-analysis {
+        min-height: 70px;
+    }
+
+    .add-student-form {
+        padding: 16px;
+    }
+
+    .student-list {
+        margin: 10px;
+    }
+
+    .search-box {
+        margin: 10px;
+        padding: 12px;
+    }
+
+    .studentss {
+        margin: 6px;
+        padding: 10px;
+    }
+
+    .footer-text {
+        flex-direction: column;
+        text-align: center;
+    }
+}
